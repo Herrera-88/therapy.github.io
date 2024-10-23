@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acesso ao Registro de Jogadores CODM</title>
+    <link rel="stylesheet" href="style.css"> <!-- Inclua seu CSS aqui -->
+    <style>
+        body {
+            background-color: #2E2E2E;
+            color: #FFD700; /* Dourado */
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        h1 {
+            margin: 20px 0;
+        }
+        .button {
+            padding: 10px 20px;
+            background-color: #FFD700; /* Dourado */
+            color: #000; /* Preto */
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #FFC300; /* Um dourado mais claro */
+        }
+        /* Estilos do pop-up */
+        .modal {
+            display: none; /* Oculto por padrão */
+            position: fixed; /* Fica no lugar */
+            z-index: 1; /* Fica em cima */
+            left: 0;
+            top: 0;
+            width: 100%; /* Largura total */
+            height: 100%; /* Altura total */
+            overflow: auto; /* Adiciona rolagem se necessário */
+            background-color: rgb(0,0,0); /* Cor de fundo */
+            background-color: rgba(0,0,0,0.4); /* Cor de fundo com opacidade */
+        }
+        .modal-content {
+            background-color: #2E2E2E;
+            margin: 15% auto; /* Centraliza o modal */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; /* Largura */
+            color: #FFD700; /* Dourado */
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: #fff;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Acesso ao Registro de Jogadores CODM</h1>
+        <button class="button" id="openModal">Registrar Novo Jogador</button>
+    </div>
+
+    <!-- O Modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Registrar Novo Jogador</h2>
+            <form id="registrationForm" action="registro_jogador.php" method="POST">
+                <label for="uid">UID do Jogador:</label>
+                <input type="text" id="uid" name="uid" required>
+
+                <label for="nome">Nome do Jogador:</label>
+                <input type="text" id="nome" name="nome" required>
+
+                <button type="submit" class="button">Finalizar Registro</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Obter o modal
+        var modal = document.getElementById("myModal");
+
+        // Obter o botão que abre o modal
+        var btn = document.getElementById("openModal");
+
+        // Obter o elemento <span> que fecha o modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // Quando o usuário clica no botão, abre o modal
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        // Quando o usuário clica no <span> (x), fecha o modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // Quando o usuário clica fora do modal, também fecha
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
